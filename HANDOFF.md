@@ -20,7 +20,9 @@
 | **第 351 ~ 400 页** | Leader+Purchase 双标签 + 独立验证列 + 单邮箱拆行 | 已完成 | `欧盟采购商_(351-400页)_单邮箱导入版.xlsx` |
 | **第 401 ~ 450 页** | Leader+Purchase 双标签 + 独立验证列 + 单邮箱拆行 | 已完成 | `欧盟采购商_(401-450页)_单邮箱导入版.xlsx` |
 | **第 451 ~ 500 页** | Leader+Purchase 双标签 + 独立验证列 + 单邮箱拆行 | 已完成 | `欧盟采购商_(451-500页)_单邮箱导入版.xlsx` |
-| **第 501 ~ 550 页** | **当前待执行批次**（共 50 页 / 500 家企业） | **待启动** | 待新账号提供 Token 后执行 |
+| **第 501 ~ 550 页** | Leader+Purchase 双标签 + 独立验证列 + 单邮箱拆行 | 已完成 | `欧盟采购商_近1年高频采购_有效采购决策人_(501-550页_500家公司)_单邮箱导入版.xlsx` |
+| **第 551 ~ 600 页** | Leader+Purchase 双标签 + 独立验证列 + 单邮箱拆行 | 已完成 | `欧盟采购商_(551-600页)_单邮箱导入版.xlsx` |
+| **第 601 ~ 650 页** | **当前待执行批次**（共 50 页 / 500 家企业） | **待启动** | 待新账号提供 Token 后执行 |
 
 ---
 
@@ -56,26 +58,26 @@
 
 ## 五、执行指令与核心脚本
 
-### 1. 爬取执行（以 501~550 页为例）
-基于已有模版 `crawl_eu_buyers_451_500.py` 另存为 `crawl_eu_buyers_501_550.py`，更新：
-- `START_PAGE = 501`, `END_PAGE = 550`
+### 1. 爬取执行（以 551~600 页为例）
+基于已有模版 `crawl_eu_buyers_501_550.py` 另存为 `crawl_eu_buyers_551_600.py`，更新：
+- `START_PAGE = 551`, `END_PAGE = 600`
 - `AUTH_TOKEN = "<新Token>"`
 - `historySearchId = "<新SearchId>"`
-- `OUTPUT_EXCEL = "欧盟采购商_近1年高频采购_有效采购决策人_(501-550页_500家公司).xlsx"`
-- `PROGRESS_FILE = "crawl_progress_eu_501_550.json"`
-- `load_progress` 中默认 `last_completed_page = 500`
+- `OUTPUT_EXCEL = "欧盟采购商_近1年高频采购_有效采购决策人_(551-600页_500家公司).xlsx"`
+- `PROGRESS_FILE = "crawl_progress_eu_551_600.json"`
+- `load_progress` 中默认 `last_completed_page = 550`
 
 启动命令（后台防风控运行）：
 ```bash
-python -u crawl_eu_buyers_501_550.py
+python -u crawl_eu_buyers_551_600.py
 ```
 
 ### 2. 多邮箱拆行为单行（导入版生成）
 爬取完成后，运行项目中已就绪的通用拆解工具：
 ```bash
 # 保留无邮箱行（标准导入版）：
-python split_emails_to_rows.py "欧盟采购商_近1年高频采购_有效采购决策人_(501-550页_500家公司).xlsx"
+python split_emails_to_rows.py "欧盟采购商_近1年高频采购_有效采购决策人_(551-600页_500家公司).xlsx"
 
 # 若导入系统要求每行必须有邮箱，加上 --filter-empty：
-python split_emails_to_rows.py "欧盟采购商_近1年高频采购_有效采购决策人_(501-550页_500家公司).xlsx" --filter-empty
+python split_emails_to_rows.py "欧盟采购商_近1年高频采购_有效采购决策人_(551-600页_500家公司).xlsx" --filter-empty
 ```
