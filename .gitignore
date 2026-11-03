@@ -35,6 +35,8 @@ ENV/
 *.xls
 *.csv
 *.log
+crawl_progress_*.json
+
 
 # IDE & OS
 .vscode/
